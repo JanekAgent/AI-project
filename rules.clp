@@ -1,7 +1,7 @@
-
-(deffacts poczatkowe
+(deffacts poczatek
     (condition)
 )
+
 (defrule example-rule
     (condition)
     =>
