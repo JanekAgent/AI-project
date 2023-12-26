@@ -4,7 +4,7 @@
     (asked "asked" "What type of game are you looking for ?" "A Strategy Game" "I want a Wargame")
     
 )
-defrule iWantAWargame
+(defrule iWantAWargame
     f1<-(asked "asked" "What type of game are you looking for ?" $?answers)
     (answer "What type of game are you looking for?" "I want a Wargame" )
     =>
