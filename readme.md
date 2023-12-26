@@ -1,1 +1,1 @@
-This is project for AI
+To work you must have python and pyclips

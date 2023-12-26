@@ -19,7 +19,8 @@ def actualquestion():
             actualquestion=fact[1]
             break
     if actualquestion=="":
-        return fact,0
+        return "",False
+    return fact,True
 
 
 
@@ -36,6 +37,7 @@ def possibleanswers(fact):
 
 while True:
     fact=actualquestion()
+    print(fact)
     if fact[1]==False:
         print("No more questions")
         break
@@ -48,7 +50,7 @@ while True:
     if t=="":
         break
 
-    clips_file.assert_string('(answer "'+t+'")')
+    clips_file.assert_string('(answer "'+fact[1]+'" "'+t+'")')
 
     clips_file.run()
     clips_file.run()
