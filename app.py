@@ -13,10 +13,17 @@ clips_file.run()
 clips_file.run()
 # Pobieranie wyników
 def actualquestion():
+    actualquestion=""
+    for fact in clips_file.facts():
+        if list(fact)[0]=="actualquestion":
+            actualquestion=fact[1]
+    if actualquestion=="":
+        return fact,0
     for fact in clips_file.facts():
         if list(fact)[0]=="question":
-            return list(fact)
-
+            if fact[1]==actualquestion:
+                return fact,True
+    return fact,0
     # print(fact)
 def printallfacts():
     for fact in clips_file.facts():
@@ -31,6 +38,10 @@ def possibleanswers(fact):
         
 while True:
     fact=actualquestion()
+    if fact[1]==False:
+        print("No more questions")
+        break
+    fact=fact[0]
     print(fact[1])
     print("Possible answers:")
     for possibleanswer in possibleanswers(fact):
@@ -41,7 +52,7 @@ while True:
     clips_file.assert_string('(actualanswer "'+t+'")')
     
     clips_file.run()
-    
+    clips_file.run()
     printallfacts()
 
 clips_file.clear()
