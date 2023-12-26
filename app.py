@@ -5,8 +5,7 @@ clips_file = clips.Environment()
 clips_file.load("rules.clp")  # Załaduj reguły z pliku "rules.clp"
 clips_file.reset()
 # Dodawanie faktów do pliku
-clips_file.assert_string("(fakt1)")
-clips_file.assert_string("(fakt2)")
+
 
 # Uruchamianie pliku
 
@@ -15,7 +14,12 @@ clips_file.run()
 # Pobieranie wyników
 for fact in clips_file.facts():
     print(fact)
-
+while True:
+    t=input("Press Enter to continue...")
+    if t=="":
+        break
+    clips_file.assert_fact("actualanswer {t}")
+    clips_file.run()
 # Zamykanie pliku
 clips_file.clear()
 

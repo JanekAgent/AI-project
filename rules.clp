@@ -1,22 +1,18 @@
 (deffacts poczatek
-    (question "What type od game do you want to play?")
+
+    (question "What type od game do you want to play?" "A Strategy Game" "Dzem" "I want a Wargame" "Kolega")
     (actualquestion "What type od game do you want to play?")
-    (possibbleanswer "A Strategy Game")
-    (possibleanswer "I want a Wargame")
+    
+    (question "Does theme matter to you?" "Yes" "No")
     
 )
 
-(defrule whichgame1
-    ?f1<-(actualquestion "What type od game do you want to play?")
-    (answer "A Strategy Game")
+(defrule mainrule
+    ?f<-(actualanswer ?answer)
+    (question ?question $?answers)
     =>
-    (retract ?f1)
-    (assert(actualquestion "Does theme matter to you?"))
+    (retract ?f)
+    (assert (answer ?question $?answers))
+
 )
-(defrule whichgame2
-    ?f1<-(actualquestion "What type od game do you want to play?")
-    (answer "I want a Wargame")
-    =>
-    (retract ?f1)
-    (assert(actualquestion "For how many players?"))
-)
+
