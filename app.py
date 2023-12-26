@@ -20,8 +20,8 @@ def actualquestion():
             break
     if actualquestion=="":
         return fact,0
-    
-   
+
+
 
 def printallfacts():
     for fact in clips_file.facts():
@@ -30,11 +30,10 @@ def printallfacts():
 def possibleanswers(fact):
     possibleanswers=[]
     fact=fact[2:]
-    for i in range(0,len(fact)):
-        if i%2==0:
-            possibleanswers.append(fact[i])
+    for i in range(len(fact)):
+        possibleanswers.append(fact[i])
     return possibleanswers
-        
+
 while True:
     fact=actualquestion()
     if fact[1]==False:
@@ -49,8 +48,8 @@ while True:
     if t=="":
         break
 
-    clips_file.assert_string('(actualanswer "'+t+'")')
-    
+    clips_file.assert_string('(answer "'+t+'")')
+
     clips_file.run()
     clips_file.run()
     printallfacts()
