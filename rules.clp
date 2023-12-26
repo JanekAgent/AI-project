@@ -1,24 +1,27 @@
 (deffacts poczatek
-; (question "question" "Pytanie" "Odpowiedz1" "Nastepnepytanie" "Odpowiedz2" "Nastepnepytanie2")
 
-    (question "question" "What type od game do you want to play?" "A Strategy Game" "Dzem" "I want a Wargame" "Kolega")
-    (actualquestion "actualquestion" "What type od game do you want to play?")
-    
-    (question "Does theme matter to you?" "Yes" "No")
-    
+
+    (asked "asked" "What type of game are you looking for ?" "A Strategy Game" "I want a Wargame")
     
 )
 
-(defrule mainrule
-    ?f<-(actualquestion "actualquestion" ?question)
-    ?f2<-(actualanswer ?answer)
-    (question "question" ?question $?answers1 ?answer ?nextquestion $?answers2)
+(
+    defrule aStrategyGame
+    f1<-(asked "asked" "What type of game are you looking for ?" $?answers)
+    (answer "What type of game are you looking for ?" "A Strategy Game" )
     =>
-    (retract ?f)
-    (retract ?f2)
-    (printout t "wreorwer " ?answer crlf)
-    (assert (answer ?question ?answer))
-    (assert (actualquestion ?nextquestion))
-
+    retract(f1)
+    (asked "asked" "Does theme matter to you?" "Yes" "No")
 )
+( defrule themeYes
+    f1<-(asked "asked" "Does theme matter to you?" $?answers)
+    (answer "Does theme matter to you?" "Yes" )
+    =>
+    retract(f1)
+    (asked "asked" "What's your favorite theme?" "Science Fiction" "Fantasy" )
+)
+
+
+
+
 
