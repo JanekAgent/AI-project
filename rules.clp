@@ -1,10 +1,285 @@
 (deffacts poczatek
 
 
-   (asked "asked" "What type of game are you looking for ?" "A Strategy Game" "I want a Wargame")
+    (asked "asked" "What type of game are you looking for ?" "A Strategy Game" "I want a Wargame")
     
 )
+defrule iWantAWargame
+    f1<-(asked "asked" "What type of game are you looking for ?" $?answers)
+    (answer "What type of game are you looking for?" "I want a Wargame" )
+    =>
+    retract(f1)
+    (asked "asked" "For how many players?" "2 or more" "Just me")
+)
 
+(
+    defrule justMe
+    f1<-(asked "asked" "For how many players?" $?answers)
+    (answer "For how many players?" "Just me" )
+    =>
+    retract(f1)
+    (asked "asked" "Oto gry do wybory, którą z nich wybierasz?"
+    "Field Commander Series ~ Historic Battles"
+    "Thunderbolt: Apache Leader ~ Modern Air Support"
+    "Space Infantry ~ Science Fiction")
+)
+
+(
+    defrule fieldCommanderSeries
+    f1<-(asked "asked" "Oto gry do wybory, którą z nich wybierasz?" $?answers)
+    (answer "Oto gry do wybory, którą z nich wybierasz?" "Field Commander Series ~ Historic Battles" )
+    =>
+    retract(f1)
+    (game "Field Commander Series ~ Historic Battles")
+)
+
+(
+    defrule thunderboltApacheLeader
+    f1<-(asked "asked" "Oto gry do wybory, którą z nich wybierasz?" $?answers)
+    (answer "Oto gry do wybory, którą z nich wybierasz?" "Thunderbolt: Apache Leader ~ Modern Air Support" )
+    =>
+    retract(f1)
+    (game "Thunderbolt: Apache Leader ~ Modern Air Support")
+)
+
+(
+    defrule spaceInfantry
+    f1<-(asked "asked" "Oto gry do wybory, którą z nich wybierasz?" $?answers)
+    (answer "Oto gry do wybory, którą z nich wybierasz?" "Space Infantry ~ Science Fiction" )
+    =>
+    retract(f1)
+    (game "Space Infantry ~ Science Fiction")
+)
+
+(
+    defrule twoOrMore
+    f1<-(asked "asked" "For how many players?" $?answers)
+    (answer "For how many players?" "2 or more" )
+    =>
+    retract(f1)
+    (asked "asked" "Do you have any wargaming experience?"
+    "It's new to me"
+    "Yes")
+)
+
+(
+    defrule itsNewToMe
+    f1<-(asked "asked" "Do you have any wargaming experience?" $?answers)
+    (answer "Do you have any wargaming experience?" "It's new to me" )
+    =>
+    retract(f1)
+    (asked "asked" "Are you a fan of risk?"
+    "Yes"
+    "No")
+)
+
+(
+    defrule riskYes
+    f1<-(asked "asked" "Are you a fan of Risk?" $?answers)
+    (answer "Are you a fan of Risk?" "Yes" )
+    =>
+    retract(f1)
+    (game "Risk: Legacy")
+)
+
+(
+    defrule riskNo
+    f1<-(asked "asked" "Are you a fan of Risk?" $?answers)
+    (answer "Are you a fan of Risk?" "No" )
+    =>
+    retract(f1)
+    (asked "asked" "World history or high fantasy?"
+    "History"
+    "Fantasy")
+)
+
+(
+    defrule worldHistory
+    f1<-(asked "asked" "World history or high fantasy?" $?answers)
+    (answer "World history or high fantasy?" "History" )
+    =>
+    retract(f1)
+    (game "Memoir '44")
+)
+
+(
+    defrule highFantasy
+    f1<-(asked "asked" "World history or high fantasy?" $?answers)
+    (answer "World history or high fantasy?" "highFantasy" )
+    =>
+    retract(f1)
+    (game "Battles of Westeros")
+)
+
+
+(
+    defrule twoOrMoreYes
+    f1<-(asked "asked" "Do you have any wargaming experience?" $?answers)
+    (answer "Do you have any wargaming experience?" "Yes" )
+    =>
+    retract(f1)
+    (asked "asked" "Want to command Roman legions?"
+    "Yes"
+    "No")
+)
+
+(
+    defrule romanLegions
+    f1<-(asked "asked" "Want to command Roman legions?" $?answers)
+    (answer "Want to command Roman legions?" "Yes" )
+    =>
+    retract(f1)
+    (game "Commands & Colors: Ancients")
+)
+
+(
+    defrule romanLegionsNo
+    f1<-(asked "asked" "Want to command Roman legions?" $?answers)
+    (answer "Want to command Roman legions?" "No" )
+    =>
+    retract(f1)
+    (asked "asked" "Lead 19th Century battle lines?"
+    "No"
+    "Yes")
+)
+
+(
+    defrule battleLinesYes
+    f1<-(asked "asked" "Lead 19th Century battle lines?" $?answers)
+    (answer "Lead 19th Century battle lines?" "Yes" )
+    =>
+    retract(f1)
+    (game "1812: The Invasion of Canada")
+)
+
+(
+    defrule battleLinesNo
+    f1<-(asked "asked" "Lead 19th Century battle lines?" $?answers)
+    (answer "Lead 19th Century battle lines?" "No" )
+    =>
+    retract(f1)
+    (asked "How about World War II ?"
+    "Yes"
+    "No")
+)
+
+(
+    defrule worldWarIIYes
+    f1<-(asked "asked" "How about World War II ?" $?answers)
+    (answer "How about World War II ?" "Yes" )
+    =>
+    retract(f1)
+    (asked "Card or dice driven combat?"
+    "roll roll roll"
+    "shuffle shuffle")
+)
+
+(
+    defrule worldWarIIYesRoll
+    f1<-(asked "asked" "Card or dice driven combat?" $?answers)
+    (answer "Card or dice driven combat?" "roll roll roll" )
+    =>
+    retract(f1)
+    (game "Tide of Iron")
+)
+
+(
+    defrule worldWarIIYesCard
+    f1<-(asked "asked" "Card or dice driven combat?" $?answers)
+    (answer "Card or dice driven combat?" "shuffle shuffle" )
+    =>
+    retract(f1)
+    (game "Combat Commnader Series")
+)
+
+(
+    defrule worldWarIINo
+    f1<-(asked "asked" "How about World War II ?" $?answers)
+    (answer "How about World War II ?" "No" )
+    =>
+    retract(f1)
+    (asked "Modern Warfare, then?"
+    "Yes, I like the immediacy"
+    "No, I'm tired of real wars")
+)
+
+(
+    defrule moderWarfareYes
+    f1<-(asked "asked" "Modern Warfare, then?" $?answers)
+    (answer "Modern Warfare, then?" "Yes" )
+    =>
+    retract(f1)
+    (game "Labyrinth: The War on Terror")
+)
+
+(
+    defrule moderWarfareNo
+    f1<-(asked "asked" "Modern Warfare, then?" $?answers)
+    (answer "Modern Warfare, then?" "No, I'm tired of real wars" )
+    =>
+    retract(f1)
+    (asked "Science Fiction or alternative History?"
+    "Alt-History"
+    "Science Fiction")
+)
+
+(
+    defrule altHistory
+    f1<-(asked "asked" "Science Fiction or alternative History?" $?answers)
+    (answer "Science Fiction or alternative History?" "Alt-History")
+    =>
+    retract(f1)
+    (asked "Tactical miniatures or large-scale strategy?"
+    "Strategic"
+    "Tactical")
+)
+
+(
+    defrule altHistoryStrategic
+    f1<-(asked "asked" "Tactical miniatures or large-scale strategy?" $?answers)
+    (answer "Tactical miniatures or large-scale strategy?" "Strategic")
+    =>
+    retract(f1)
+    (game "Fortress America")
+)
+
+(
+    defrule altHistoryTactical
+    f1<-(asked "asked" "Tactical miniatures or large-scale strategy?" $?answers)
+    (answer "Tactical miniatures or large-scale strategy?" "Tactical")
+    =>
+    retract(f1)
+    (game "Dust Tactics")
+)
+
+(
+    defrule scienceFiction
+    f1<-(asked "asked" "Science Fiction or alternative History?" $?answers)
+    (answer "Science Fiction or alternative History?" "Science Fiction")
+    =>
+    retract(f1)
+    (asked "Space ships or giant robots?"
+    "Ships!"
+    "Mechs!")
+)
+
+(
+    defrule scienceFictionShips
+    f1<-(asked "asked" "Space ships or giant robots?" $?answers)
+    (answer "Space ships or giant robots?" "Ships!")
+    =>
+    retract(f1)
+    (game "Battleship Galaxies")
+)
+
+(
+    defrule scienceFictionMechs
+    f1<-(asked "asked" "Space ships or giant robots?" $?answers)
+    (answer "Space ships or giant robots?" "Mechs!!")
+    =>
+    retract(f1)
+    (game "Battletech")
+)
 (
     defrule aStrategyGame
     ?f1<-(asked "asked" "What type of game are you looking for ?" $?answers)
