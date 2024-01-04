@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Chooser</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1>Hello I'm the app for choosing game to play</h1>
+    <p>After some question I will gave you a title</p>
+    
+    <form method="POST">
+        <label for="question">{{ fact }}</label>
+        <ul>
+            {% for question in questions %}
+            <li>
+                <input type="radio" id="{{ question }}" name="answer" value="{{ question }}">
+                <label for="{{ question }}">{{ question }}</label>
+            </li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

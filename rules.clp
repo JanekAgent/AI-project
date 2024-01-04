@@ -30,7 +30,7 @@
     (answer "Oto gry do wybory, którą z nich wybierasz?" "Field Commander Series ~ Historic Battles" )
     =>
     (retract ?f1)
-    (assert (game "Field Commander Series ~ Historic Battles"))
+    (assert (game "game" "Field Commander Series ~ Historic Battles"))
 )
 
 (
@@ -39,7 +39,7 @@
     (answer "Oto gry do wybory, którą z nich wybierasz?" "Thunderbolt: Apache Leader ~ Modern Air Support" )
     =>
     (retract ?f1)
-    (assert (game "Thunderbolt: Apache Leader ~ Modern Air Support"))
+    (assert (game "game" "Thunderbolt: Apache Leader ~ Modern Air Support"))
 )
 
 (
@@ -48,7 +48,7 @@
     (answer "Oto gry do wybory, którą z nich wybierasz?" "Space Infantry ~ Science Fiction" )
     =>
     (retract ?f1)
-    (assert (game "Space Infantry ~ Science Fiction"))
+    (assert (game "game" "Space Infantry ~ Science Fiction"))
 )
 
 (
@@ -79,7 +79,7 @@
     (answer "Are you a fan of Risk?" "Yes" )
     =>
     (retract ?f1)
-    (assert (game "Risk: Legacy"))
+    (assert (game "game" "Risk: Legacy"))
 )
 
 (
@@ -99,7 +99,7 @@
     (answer "World history or high fantasy?" "History" )
     =>
     (retract ?f1)
-    (assert (game "Memoir '44"))
+    (assert (game "game" "Memoir '44"))
 )
 
 (
@@ -108,7 +108,7 @@
     (answer "World history or high fantasy?" "highFantasy" )
     =>
     (retract ?f1)
-    (assert (game "Battles of Westeros"))
+    (assert (game "game" "Battles of Westeros"))
 )
 
 
@@ -129,7 +129,7 @@
     (answer "Want to command Roman legions?" "Yes" )
     =>
     (retract ?f1)
-    (assert (game "Commands & Colors: Ancients"))
+    (assert (game "game" "Commands & Colors: Ancients"))
 )
 
 (
@@ -149,7 +149,7 @@
     (answer "Lead 19th Century battle lines?" "Yes" )
     =>
     (retract ?f1)
-    (assert (game "1812: The Invasion of Canada"))
+    (assert (game "game" "1812: The Invasion of Canada"))
 )
 
 (
@@ -180,7 +180,7 @@
     (answer "Card or dice driven combat?" "roll roll roll" )
     =>
     (retract ?f1)
-    (assert (game "Tide of Iron"))
+    (assert (game "game" "Tide of Iron"))
 )
 
 (
@@ -189,7 +189,7 @@
     (answer "Card or dice driven combat?" "shuffle shuffle" )
     =>
     (retract ?f1)
-    (assert (game "Combat Commnader Series"))
+    (assert (game "game" "Combat Commnader Series"))
 )
 
 (
@@ -209,7 +209,7 @@
     (answer "Modern Warfare, then?" "Yes" )
     =>
     (retract ?f1)
-    (assert (game "Labyrinth: The War on Terror"))
+    (assert (game "game" "Labyrinth: The War on Terror"))
 )
 
 (
@@ -240,7 +240,7 @@
     (answer "Tactical miniatures or large-scale strategy?" "Strategic")
     =>
     (retract ?f1)
-    (assert (game "Fortress America"))
+    (assert (game "game" "Fortress America"))
 )
 
 (
@@ -249,7 +249,7 @@
     (answer "Tactical miniatures or large-scale strategy?" "Tactical")
     =>
     (retract ?f1)
-    (assert (game "Dust Tactics"))
+    (assert (game "game" "Dust Tactics"))
 )
 
 (
@@ -269,7 +269,7 @@
     (answer "Space ships or giant robots?" "Ships!")
     =>
     (retract ?f1)
-    (assert (game "Battleship Galaxies"))
+    (assert (game "game" "Battleship Galaxies"))
 )
 
 (
@@ -278,7 +278,7 @@
     (answer "Space ships or giant robots?" "Mechs!!")
     =>
     (retract ?f1)
-    (assert (game "Battletech"))
+    (assert (game "game" "Battletech"))
 )
 (
     defrule aStrategyGame
@@ -307,21 +307,21 @@
     (answer "Star Wars fan?" "Yes" )
     =>
     (retract ?f1 )
-    (assert (asked "asked" "Grand adventure or tactical space combat?" "Yes" "No" )
+    (assert (asked "asked" "Grand adventure or tactical space combat?" "Adventure" "Pew! Pew!" )
 ))
 (defrule GrandAdventure
     ?f1<-(asked "asked" "Grand adventure or tactical space combat?" $?answers)
-    (answer "Grand adventure or tactical space combat?" "Yes" )
+    (answer "Grand adventure or tactical space combat?" "Adventure" )
     =>
     (retract ?f1 )
-    (assert (game "Star Wars Living Card Game"))
+    (assert (game "game" "Star Wars Living Card Game"))
 )
 (defrule pewPew
     ?f1<-(asked "asked" "Grand adventure or tactical space combat?" $?answers)
-    (answer "Grand adventure or tactical space combat?" "No" )
+    (answer "Grand adventure or tactical space combat?" "Pew! Pew!" )
     =>
     (retract ?f1 )
-    (assert (game "Star Wars: X-Wing Miniatures Game"))
+    (assert (game "game" "Star Wars: X-Wing Miniatures Game"))
 )
 (defrule noStarWarsFan
     ?f1<-(asked "asked" "Star Wars fan?" $?answers)
@@ -342,14 +342,14 @@
     (answer "One-on-one, or working together?" "Competitive" )
     =>
     (retract ?f1 )
-    (assert (game "Star Trek: Fleet Captains"))
+    (assert (game "game" "Star Trek: Fleet Captains"))
 )
 (defrule workingTogether
     ?f1<-(asked "asked" "One-on-one, or working together?" $?answers)
     (answer "One-on-one, or working together?" "Cooperative" )
     =>
     (retract ?f1 )
-    (assert (game "Star Trek: Expeditions"))
+    (assert (game "game" "Star Trek: Expeditions"))
 )
 (defrule noStarTrek
     ?f1<-(asked "asked" "Star Trek, then?" $?answers)
@@ -363,7 +363,7 @@
     (answer "Battlestar Galactica ?" "Yes" )
     =>
     (retract ?f1 )
-    (assert (game "Battlestar Galactica: The Board Game"))
+    (assert (game "game" "Battlestar Galactica: The Board Game"))
 )
 (defrule noBattlestarGalactica
     ?f1<-(asked "asked" "Battlestar Galactica ?" $?answers)
@@ -393,21 +393,21 @@
     (answer "Doing battle..." "In space" )
     =>
     (retract ?f1 )
-    (assert (game "Cosmic Encounter"))
+    (assert (game "game" "Cosmic Encounter"))
 )
 (defrule forTheGalacticCentre
     ?f1<-(asked "asked" "Doing battle..." $?answers)
     (answer "Doing battle..." "For the Galactic Centre" )
     =>
     (retract ?f1 )
-    (assert (game "Rex: Final Days of an Empire"))
+    (assert (game "game" "Rex: Final Days of an Empire"))
 )
 (defrule forEarth
     ?f1<-(asked "asked" "Doing battle..." $?answers)
     (answer "Doing battle..." "For Earth" )
     =>
     (retract ?f1 )
-    (assert (game "Conquest of Planet Earth"))
+    (assert (game "game" "Conquest of Planet Earth"))
 )
 (defrule notAlienRace
     ?f1<-(asked "asked" "How about being an alien race?" $?answers)
@@ -428,7 +428,7 @@
     (answer "A Deck Builder?" "Yes" )
     =>
     (retract ?f1 )
-    (assert (game "Core Worlds"))
+    (assert (game "game" "Core Worlds"))
 )
 (defrule noDeckBuilder
     ?f1<-(asked "asked" "A Deck Builder?" $?answers)
@@ -442,14 +442,14 @@
     (answer "A Living Card Game?" "Yes" )
     =>
     (retract ?f1 )
-    (assert (game "Android: Netrunner"))
+    (assert (game "game" "Android: Netrunner"))
 )
 (defrule noLivingCardGame
     ?f1<-(asked "asked" "A Living Card Game?" $?answers)
     (answer "A Living Card Game?" "No" )
     =>
     (retract ?f1 )
-    (assert (game "Race for the Galaxy"))
+    (assert (game "game" "Race for the Galaxy"))
 )
 (defrule noCardGame
     ?f1<-(asked "asked" "How about a card game?" $?answers)
@@ -464,14 +464,14 @@
     (answer "If not alien, I'll be a..." "Athlete" )
     =>
     (retract ?f1 )
-    (assert (game "Dreadball:The Futuristic Sports Game"))
+    (assert (game "game" "Dreadball:The Futuristic Sports Game"))
 )
 (defrule galacticCorporation
     ?f1<-(asked "asked" "If not alien, I'll be a..." $?answers)
     (answer "If not alien, I'll be a..." "GAlactic Corporation" )
     =>
     (retract ?f1 )
-    (assert (game "Phantom League"))
+    (assert (game "game" "Phantom League"))
 )
 (defrule spaceCrewOnMission
     ?f1<-(asked "asked" "If not alien, I'll be a..." $?answers)
@@ -486,14 +486,14 @@
     (answer "How will you succeed?" "Teamwork and high-speed planning" )
     =>
     (retract ?f1 )
-    (assert (game "Space Alert"))
+    (assert (game "game" "Space Alert"))
 )
 (defrule teamworkAndDexerity
     ?f1<-(asked "asked" "How will you succeed?" $?answers)
     (answer "How will you succeed?" "Teamwork and dexerity" )
     =>
     (retract ?f1 )
-    (assert (game "Space Cadets"))
+    (assert (game "game" "Space Cadets"))
 )
 (defrule merchant
     ?f1<-(asked "asked" "If not alien, I'll be a..." $?answers)
@@ -508,14 +508,14 @@
     (answer "Seriously?" "It's serious business" )
     =>
     (retract ?f1 )
-    (assert (game "Merchant of Venus"))
+    (assert (game "game" "Merchant of Venus"))
 )
 (defrule nah
     ?f1<-(asked "asked" "Seriously?" $?answers)
     (answer "Seriously?" "Nah,we just want a giggle" )
     =>
     (retract ?f1 )
-    (assert (game "Galaxy Trucker"))
+    (assert (game "game" "Galaxy Trucker"))
 )
 (defrule 4X
     ?f1<-(asked "asked" "Explore, Expand, Exploit and Exterminate?" $?answers)
@@ -530,7 +530,7 @@
     (answer "So, just how epic are we getting?" "We've got all day" )
     =>
     (retract ?f1 )
-    (assert (game "Twilight Imperium: 3rd Edition"))
+    (assert (game "game" "Twilight Imperium: 3rd Edition"))
 
 
 )
@@ -539,7 +539,7 @@
     (answer "So, just how epic are we getting?" "It is a work night..." )
     =>
     (retract ?f1 )
-    (assert (game "Eclipse"))
+    (assert (game "game" "Eclipse"))
 
 )
 (defrule fantasy
@@ -580,14 +580,14 @@
     (answer "Crush or out-maneuver your enemies?" "Fight" )
     =>
     (retract ?f1 )
-    (assert (game "Claustrophobia"))
+    (assert (game "game" "Claustrophobia"))
 )
 (defrule maneuver
     ?f1<-(asked "asked" "Crush or out-maneuver your enemies?" $?answers)
     (answer "Crush or out-maneuver your enemies?" "Maneuver" )
     =>
     (retract ?f1 )
-    (assert (game "Dungeon Twister 2: Prison" ))
+    (assert (game "game" "Dungeon Twister 2: Prison" ))
 
 )
 (defrule moreThanTwo
@@ -609,14 +609,14 @@
     (answer "Playing with kids?" "Yes" )
     =>
     (retract ?f1 )
-    (assert (game "Mice and Mystics"))
+    (assert (game "game" "Mice and Mystics"))
 )
 (defrule notPlayingWithKids
     ?f1<-(asked "asked" "Playing with kids?" $?answers)
     (answer "Playing with kids?" "No" )
     =>
     (retract ?f1 )
-    (assert (game "Dungeons ad Dragons: Legend of Drizzt"))
+    (assert (game "game" "Dungeons ad Dragons: Legend of Drizzt"))
 
 )
 (defrule competitive
@@ -631,14 +631,14 @@
     (answer "Do you want a campaign?" "Yes" )
     =>
     (retract ?f1 )
-    (assert (game "Descent: Journeys in the Dark 2nd Edition"))
+    (assert (game "game" "Descent: Journeys in the Dark 2nd Edition"))
 )
 (defrule justOneGame
     ?f1<-(asked "asked" "Do you want a campaign?" $?answers)
     (answer "Do you want a campaign?" "Just one game" )
     =>
     (retract ?f1 )
-    (assert (game "Dungeon Run"))
+    (assert (game "game" "Dungeon Run"))
 )
 (defrule notSerious
     ?f1<-(asked "asked" "A serious one?" $?answers)
@@ -652,7 +652,7 @@
     (answer "How about managing your own dungeon?" "Yes" )
     =>
     (retract ?f1 )
-    (assert (game "Dungeon Lords"))
+    (assert (game "game" "Dungeon Lords"))
 )
 (defrule notManagingYourOwnDungeon
     ?f1<-(asked "asked" "How about managing your own dungeon?" $?answers)
@@ -681,7 +681,7 @@
     (answer "Mind getting trounced by random events?" "Yes, Strategy matters" )
     =>
     (retract ?f1 )
-    (assert (game "Mage Knight"))
+    (assert (game "game" "Mage Knight"))
 )
 (defrule experienceCounts
     ?f1<-(asked "asked" "Mind getting trounced by random events?" $?answers)
@@ -695,14 +695,14 @@
     (answer "Is storytelling important?" "Yes" )
     =>
     (retract ?f1 )
-    (assert (game "Tales of the Arabian Nights"))
+    (assert (game "game" "Tales of the Arabian Nights"))
 )
 (defrule notAsMuchAsCombat
     ?f1<-(asked "asked" "Is storytelling important?" $?answers)
     (answer "Is storytelling important?" "Not as much as combat!" )
     =>
     (retract ?f1 )
-    (assert (game "Talisman"))
+    (assert (game "game" "Talisman"))
 )
 (defrule cooperativeQuestDungeon
     ?f1<-(asked "asked" "Competitive or cooperative?" $?answers)
@@ -717,21 +717,21 @@
     (answer "Board or card game?" "Boards" )
     =>
     (retract ?f1 )
-    (assert (game "Defenders of the Realm"))
+    (assert (game "game" "Defenders of the Realm"))
 )
 (defrule cardsCooperativeQuestDungeon
     ?f1<-(asked "asked" "Board or card game?" $?answers)
     (answer "Board or card game?" "Cards" )
     =>
     (retract ?f1 )
-    (assert (game "Lord of the Rings: The Card Game"))
+    (assert (game "game" "Lord of the Rings: The Card Game"))
 )
 (defrule cooperativeIfICanBackstab
     ?f1<-(asked "asked" "Cooperative - if I can backstab" $?answers)
     (answer "Cooperative - if I can backstab" "Cooperative - if I can backstab" )
     =>
     (retract ?f1 )
-    (assert (game "Shadows over Camelot"))
+    (assert (game "game" "Shadows over Camelot"))
 )
 (defrule noQuesting
     ?f1<-(asked "asked" "Want the whole questing thing, eh?" $?answers)
@@ -752,14 +752,14 @@
     (answer "Competitive Deck Builders?" "Competitive" )
     =>
     (retract ?f1 )
-    (assert (game "Thunderstone: Advance"))
+    (assert (game "game" "Thunderstone: Advance"))
 )
 (defrule cooperativeDeckBuilders
     ?f1<-(asked "asked" "Competitive Deck Builders?" $?answers)
     (answer "Competitive Deck Builders?" "Cooperative" )
     =>
     (retract ?f1 )
-    (assert (game "Rune Age"))
+    (assert (game "game" "Rune Age"))
 )
 (defrule noDeckBuilders
     ?f1<-(asked "asked" "Do you like deckBuilders?" $?answers)
@@ -773,7 +773,7 @@
     (answer "Lord of the Rings fan?" "Yes" )
     =>
     (retract ?f1 )
-    (assert (game "War of the Ring"))
+    (assert (game "game" "War of the Ring"))
 )
 (defrule noLordOfTheRingsFan
     ?f1<-(asked "asked" "Lord of the Rings fan?" $?answers)
@@ -794,14 +794,14 @@
     (answer "Cooperative or competitive?" "Cooperative" )
     =>
     (retract ?f1 )
-    (assert (game "Castle Panic"))
+    (assert (game "game" "Castle Panic"))
 )
 (defrule competitiveCastleDefence
     ?f1<-(asked "asked" "Cooperative or competitive?" $?answers)
     (answer "Cooperative or competitive?" "Competitive" )
     =>
     (retract ?f1 )
-    (assert (game "Castle Rampage"))
+    (assert (game "game" "Castle Rampage"))
 )
 (defrule notSoundsFun
     ?f1<-(asked "asked" "How about a castle defence? " $?answers)
@@ -823,14 +823,14 @@
     (answer "Epic?" "Yes! It's gotta be big" )
     =>
     (retract ?f1 )
-    (assert (game "Runewars"))
+    (assert (game "game" "Runewars"))
 )
 (defrule keepItQuick
     ?f1<-(asked "asked" "Epic?" $?answers)
     (answer "Epic?" "No,keep it quick" )
     =>
     (retract ?f1 )
-    (assert (game "Small World"))
+    (assert (game "game" "Small World"))
 )
 (defrule noConquestInAFantasyWorld
     ?f1<-(asked "asked" "Conquest in a fantasy world?" $?answers)
@@ -844,19 +844,19 @@
     (answer "Everday life, eh?" "Running a business" )
     =>
     (retract ?f1 )
-    (assert (game "Dungeon Petz"))
+    (assert (game "game" "Dungeon Petz"))
 )
 (defrule relaxingAfterWork
     ?f1<-(asked "asked" "Everday life, eh?" $?answers)
     (answer "Everday life, eh?" "Relaxing after work" )
     =>
     (retract ?f1 )
-    (assert (game "Red Dragon Inn"))
+    (assert (game "game" "Red Dragon Inn"))
 )
 (defrule annihilatingYourBusinessRivals
     ?f1<-(asked "asked" "Everday life, eh?" $?answers)
     (answer "Everday life, eh?" "Annihilating your business rivals" )
     =>
     (retract ?f1 )
-     (assert (game "Maga Wars"))
+     (assert (game "game" "Maga Wars"))
 )
