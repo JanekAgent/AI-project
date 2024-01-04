@@ -1,5 +1,6 @@
 import clips
-
+from flask import Flask, render_template, request
+app = Flask(__name__)
 # Tworzenie nowego pliku
 clips_file = clips.Environment()
 clips_file.load("rules.clp")  # Załaduj reguły z pliku "rules.clp"
@@ -22,7 +23,15 @@ def actualquestion():
         return "",False
     return fact,True
 
-
+def decisionofgame():
+    decision=""
+    for fact in clips_file.facts():
+        if list(fact)[0]=="game":
+            decision=fact[1]
+            break
+    if decision=="":
+        return "",False
+    return fact,True
 
 def printallfacts():
     for fact in clips_file.facts():
@@ -35,27 +44,66 @@ def possibleanswers(fact):
         possibleanswers.append(fact[i])
     return possibleanswers
 
-while True:
-    fact=actualquestion()
-    print(fact)
-    if fact[1]==False:
-        print("No more questions")
-        break
-    fact=fact[0]
-    print(fact[1])
-    print("Possible answers:")
-    for possibleanswer in possibleanswers(fact):
-        print(possibleanswer)
-    t=input("")
-    if t=="":
-        break
 
-    clips_file.assert_string('(answer "'+fact[1]+'" "'+t+'")')
 
-    clips_file.run()
-    clips_file.run()
-    printallfacts()
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'GET':
+        fact = actualquestion()
+        
+    
+        
+        if fact[1] == False:
+            game=decisionofgame()
+            if game[1]==False:
+                return "Error"
+            else:
+                return render_template('game.html', game=game[0][1])
+        fact=fact[0]
+        
+        return render_template('index.html', fact=fact[1],questions=possibleanswers(fact))
+    if request.method == 'POST':
+        t = request.form.get('answer')
+        if not t:
+            fact = actualquestion()
+        
+    
+        
+            if fact[1] == False:
+                game=decisionofgame()
+                if game[1]==False:
+                    return "Error"
+                else:
+                    return render_template('game.html', game=game[0][1])
+            fact=fact[0]
+        
+            return render_template('index.html', fact=fact[1],questions=possibleanswers(fact))
+        fact = actualquestion()
+        if fact[1] == False:
+            game=decisionofgame()
+            if game[1]==False:
+                return "Error"
+            else:
+                return render_template('game.html', game=game[0][1])
+        fact=fact[0]
+        
+        clips_file.assert_string('(answer "'+fact[1]+'" "'+t+'")')
+        clips_file.run()
+        clips_file.run()
+        fact = actualquestion()
+        if fact[1] == False:
+            game=decisionofgame()
+            if game[1]==False:
+                return "Error"
+            else:
+                return render_template('game.html', game=game[0][1])
+        fact=fact[0]
+        return render_template('index.html', fact=fact[1],questions=possibleanswers(fact))
+    
+        
 
+if __name__ == '__main__':
+    app.run()
 clips_file.clear()
 
 
