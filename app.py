@@ -60,12 +60,23 @@ def index():
             else:
                 return render_template('game.html', game=game[0][1])
         fact=fact[0]
-        print(fact)
-        print(possibleanswers(fact))
+        
         return render_template('index.html', fact=fact[1],questions=possibleanswers(fact))
     if request.method == 'POST':
-        t = request.form['answer']
+        t = request.form.get('answer')
         if not t:
+            fact = actualquestion()
+        
+    
+        
+            if fact[1] == False:
+                game=decisionofgame()
+                if game[1]==False:
+                    return "Error"
+                else:
+                    return render_template('game.html', game=game[0][1])
+            fact=fact[0]
+        
             return render_template('index.html', fact=fact[1],questions=possibleanswers(fact))
         fact = actualquestion()
         if fact[1] == False:
@@ -75,7 +86,7 @@ def index():
             else:
                 return render_template('game.html', game=game[0][1])
         fact=fact[0]
-        print(t)
+        
         clips_file.assert_string('(answer "'+fact[1]+'" "'+t+'")')
         clips_file.run()
         clips_file.run()
