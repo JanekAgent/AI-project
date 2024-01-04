@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Game Chooser</title>
-    <style>
-        /* Add your CSS styles here */
-    </style>
+    
 </head>
 <body>
     <h1>It's you answer</h1>
     <p>Your game is:</p>
     
-    
-    <label for="Game">{{ game }}</label>
+    <form>
+        <label for="Game">{{ game }}</label>
         
-        
+    </form>
     
 </body>
 </html>
