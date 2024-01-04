@@ -1,1 +1,1 @@
-To work you must have python and python libaries: pyclips and flask
+To work you must have python and python libaries: clipspy and flask
