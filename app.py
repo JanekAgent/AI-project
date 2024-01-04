@@ -44,26 +44,7 @@ def possibleanswers(fact):
         possibleanswers.append(fact[i])
     return possibleanswers
 
-while False:
-    fact=actualquestion()
-    print(fact)
-    if fact[1]==False:
-        print("No more questions")
-        break
-    fact=fact[0]
-    print(fact[1])
-    print("Possible answers:")
-    for possibleanswer in possibleanswers(fact):
-        print(possibleanswer)
-    t=input("")
-    if t=="":
-        break
 
-    clips_file.assert_string('(answer "'+fact[1]+'" "'+t+'")')
-
-    clips_file.run()
-    clips_file.run()
-    printallfacts()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
