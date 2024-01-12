@@ -105,7 +105,7 @@
 (
     defrule highFantasy
     ?f1<-(asked "asked" "World history or high fantasy?" $?answers)
-    (answer "World history or high fantasy?" "highFantasy" )
+    (answer "World history or high fantasy?" "Fantasy" )
     =>
     (retract ?f1)
     (assert (game "game" "Battles of Westeros"))
