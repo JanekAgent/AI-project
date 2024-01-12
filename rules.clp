@@ -75,7 +75,7 @@
 
 (
     defrule riskYes
-    ?f1<-(asked "asked" "Are you a fan of Risk?" $?answers)
+    ?f1<-(asked "asked" "Are you a fan of risk?" $?answers)
     (answer "Are you a fan of Risk?" "Yes" )
     =>
     (retract ?f1)
@@ -84,7 +84,7 @@
 
 (
     defrule riskNo
-    ?f1<-(asked "asked" "Are you a fan of Risk?" $?answers)
+    ?f1<-(asked "asked" "Are you a fan of risk?" $?answers)
     (answer "Are you a fan of Risk?" "No" )
     =>
     (retract ?f1)
