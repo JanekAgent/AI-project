@@ -68,14 +68,14 @@
     (answer "Do you have any wargaming experience?" "It's new to me" )
     =>
     (retract ?f1)
-    (assert (asked "asked" "Are you a fan of risk?"
+    (assert (asked "asked" "Are you a fan of Risk?"
     "Yes"
     "No"))
 )
 
 (
     defrule riskYes
-    ?f1<-(asked "asked" "Are you a fan of risk?" $?answers)
+    ?f1<-(asked "asked" "Are you a fan of Risk?" $?answers)
     (answer "Are you a fan of Risk?" "Yes" )
     =>
     (retract ?f1)
@@ -84,7 +84,7 @@
 
 (
     defrule riskNo
-    ?f1<-(asked "asked" "Are you a fan of risk?" $?answers)
+    ?f1<-(asked "asked" "Are you a fan of Risk?" $?answers)
     (answer "Are you a fan of Risk?" "No" )
     =>
     (retract ?f1)
