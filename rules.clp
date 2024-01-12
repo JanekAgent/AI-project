@@ -158,7 +158,7 @@
     (answer "Lead 19th Century battle lines?" "No" )
     =>
     (retract ?f1)
-    (assert (asked "How about World War II ?"
+    (assert (asked "asked" "How about World War II ?"
     "Yes"
     "No"))
 )
@@ -169,7 +169,7 @@
     (answer "How about World War II ?" "Yes" )
     =>
     (retract ?f1)
-    (assert (asked "Card or dice driven combat?"
+    (assert (asked "asked" "Card or dice driven combat?"
     "roll roll roll"
     "shuffle shuffle"))
 )
@@ -198,7 +198,7 @@
     (answer "How about World War II ?" "No" )
     =>
     (retract ?f1)
-    (assert (asked "Modern Warfare, then?"
+    (assert (asked "asked" "Modern Warfare, then?"
     "Yes, I like the immediacy"
     "No, I'm tired of real wars"))
 )
@@ -206,7 +206,7 @@
 (
     defrule moderWarfareYes
     ?f1<-(asked "asked" "Modern Warfare, then?" $?answers)
-    (answer "Modern Warfare, then?" "Yes" )
+    (answer "Modern Warfare, then?" "Yes, I like the immediacy" )
     =>
     (retract ?f1)
     (assert (game "game" "Labyrinth: The War on Terror"))
@@ -218,7 +218,7 @@
     (answer "Modern Warfare, then?" "No, I'm tired of real wars" )
     =>
     (retract ?f1)
-    (assert (asked "Science Fiction or alternative History?"
+    (assert (asked "asked" "Science Fiction or alternative History?"
     "Alt-History"
     "Science Fiction"))
 )
@@ -229,7 +229,7 @@
     (answer "Science Fiction or alternative History?" "Alt-History")
     =>
     (retract ?f1)
-    (assert (asked "Tactical miniatures or large-scale strategy?"
+    (assert (asked "asked" "Tactical miniatures or large-scale strategy?"
     "Strategic"
     "Tactical"))
 )
@@ -258,7 +258,7 @@
     (answer "Science Fiction or alternative History?" "Science Fiction")
     =>
     (retract ?f1)
-    (assert (asked "Space ships or giant robots?"
+    (assert (asked "asked" "Space ships or giant robots?"
     "Ships!"
     "Mechs!"))
 )
@@ -275,7 +275,7 @@
 (
     defrule scienceFictionMechs
     ?f1<-(asked "asked" "Space ships or giant robots?" $?answers)
-    (answer "Space ships or giant robots?" "Mechs!!")
+    (answer "Space ships or giant robots?" "Mechs!")
     =>
     (retract ?f1)
     (assert (game "game" "Battletech"))
